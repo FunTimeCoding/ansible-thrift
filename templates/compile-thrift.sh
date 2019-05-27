@@ -26,7 +26,8 @@ if [ ! -f "${SIGNATURE_FILE}" ]; then
     wget --quiet --output-document "${SIGNATURE_FILE}" "https://www.apache.org/dist/thrift/${VERSION}/${FILE}.asc"
 fi
 
-gpg2 --verify "${SIGNATURE_FILE}" "${SOURCE_ARCHIVE}"
+export GNUPGHOME='/dev/null'
+gpg --verify "${SIGNATURE_FILE}" "${SOURCE_ARCHIVE}"
 
 if [ ! -d "${SOURCE_DIRECTORY}" ]; then
     mkdir "${SOURCE_DIRECTORY}"

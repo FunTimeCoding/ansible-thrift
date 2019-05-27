@@ -8,5 +8,5 @@
     path: '{{ ansible_user_dir }}/opt/thrift-{{ thrift.version }}'
   register: check_thrift
 
-- shell: '{{ ansible_user_dir }}/compile-thrift.sh'
+- shell: '{{ ansible_user_dir }}/compile-thrift.sh {{ thrift.version }}'
   when: check_thrift.stat.exists == False
