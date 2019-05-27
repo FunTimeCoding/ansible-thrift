@@ -1,6 +1,6 @@
 ---
 - template:
-    src: compile-thift.sh
+    src: compile-thrift.sh
     dest: '{{ ansible_user_dir }}/compile-thrift.sh'
     mode: 0755
 
