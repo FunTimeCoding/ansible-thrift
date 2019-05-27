@@ -1,1 +1,12 @@
 ---
+- template:
+    src: compile-thift.sh
+    dest: '{{ ansible_user_dir }}/compile-thrift.sh'
+    mode: 0755
+
+- stat:
+    path: '{{ ansible_user_dir }}/opt/thrift-{{ thrift.version }}'
+  register: check_thrift
+
+- shell: '{{ ansible_user_dir }}/compile-thrift.sh'
+  when: check_thrift.stat.exists == False

@@ -1,8 +1,14 @@
 #!/bin/sh -e
 
-SOURCE_BASE_DIRECTORY="${HOME}/src"
+VERSION="${1}"
 
-VERSION=0.12.0
+if [ "${VERSION}" = '' ]; then
+    echo "Usage: ${0} VERSION"
+
+    exit 1
+fi
+
+SOURCE_BASE_DIRECTORY="${HOME}/src"
 NAME="thrift-${VERSION}"
 
 FILE="${NAME}.tar.gz"
