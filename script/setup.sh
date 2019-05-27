@@ -47,7 +47,7 @@ if [ "$(command -v vagrant || true)" = '' ]; then
         if [ "${CODENAME}" = stretch ]; then
             sudo apt-get --quiet 2 install vagrant
         else
-            VAGRANT_VERSION=2.1.1
+            VAGRANT_VERSION=2.2.4
             wget --no-verbose --output-document /tmp/vagrant.deb "https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.deb"
             sudo dpkg --install /tmp/vagrant.deb
         fi
