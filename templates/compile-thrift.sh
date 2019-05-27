@@ -26,6 +26,7 @@ if [ ! -f "${SIGNATURE_FILE}" ]; then
     wget --quiet --output-document "${SIGNATURE_FILE}" "https://www.apache.org/dist/thrift/${VERSION}/${FILE}.asc"
 fi
 
+gpg --keyserver keyserver.ubuntu.com --recv 9348F0369A20818400F87140C6F2B11BEDD02683
 gpg --verify "${SIGNATURE_FILE}" "${SOURCE_ARCHIVE}"
 
 if [ ! -d "${SOURCE_DIRECTORY}" ]; then
