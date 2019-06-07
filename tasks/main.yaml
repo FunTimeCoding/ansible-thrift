@@ -1,4 +1,9 @@
 ---
+- apt:
+    name: thrift-compiler
+  remote_user: root
+  when: ansible_os_family == 'Debian'
+
 - template:
     src: compile-thrift.sh
     dest: '{{ ansible_user_dir }}/compile-thrift.sh'
@@ -10,3 +15,7 @@
 
 - shell: '{{ ansible_user_dir }}/compile-thrift.sh {{ thrift.version }}'
   when: check_thrift.stat.exists == False
+
+- homebrew:
+    name: thrift
+  when: ansible_system == 'Darwin'
