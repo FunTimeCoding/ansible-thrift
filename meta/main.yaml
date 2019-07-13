@@ -1,2 +1,7 @@
 ---
-dependencies: []
+dependencies:
+- role: libboost-all-dev
+- role: libevent-dev
+- role: libssl-dev
+- role: bison
+- role: flex

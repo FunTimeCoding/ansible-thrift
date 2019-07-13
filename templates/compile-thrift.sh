@@ -38,7 +38,11 @@ if [ ! -d "${PREFIX}" ]; then
     cd "${SOURCE_DIRECTORY}"
     export PY_PREFIX="${HOME}/opt/thrift-python-${VERSION}"
     export PHP_PREFIX="${HOME}/opt/thrift-php-${VERSION}"
-    ./configure --prefix="${PREFIX}"
+    # Skip Ruby since it would try to use sudo to bundle install system wide.
+    # TODO: Maybe it can be configured to use bundle in user mode.
+    #./configure --without-ruby --prefix="${PREFIX}"
+    # Skip even more to minimize problem sources that are not required.
+    ./configure --without-ruby --without-java --without-perl --without-erlang --without-csharp --without-haskell --without-cpp --without-haxe --without-lua --without-nodejs --without-dotnetcore --without-dlang --without-dart --without-python --without-go --prefix="${PREFIX}"
     make
     make install
 fi
