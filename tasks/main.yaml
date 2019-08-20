@@ -14,7 +14,7 @@
   register: check_thrift
 
 - shell: '{{ ansible_user_dir }}/compile-thrift.sh {{ thrift.version }}'
-  when: check_thrift.stat.exists == False
+  when: not check_thrift.stat.exists
 
 - homebrew:
     name: thrift
