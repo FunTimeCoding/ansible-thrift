@@ -2,19 +2,21 @@
 - apt:
     name: thrift-compiler
   remote_user: root
-  when: ansible_os_family == 'Debian'
+  when: ansible_os_family == 'Debian' and thrift.source == 'debian'
 
 - template:
     src: compile-thrift.sh
     dest: '{{ ansible_user_dir }}/compile-thrift.sh'
     mode: 0755
+  when: thrift.source == 'upstream'
 
 - stat:
     path: '{{ ansible_user_dir }}/opt/thrift-{{ thrift.version }}'
   register: check_thrift
+  when: thrift.source == 'upstream'
 
 - shell: '{{ ansible_user_dir }}/compile-thrift.sh {{ thrift.version }}'
-  when: not check_thrift.stat.exists
+  when: not check_thrift.stat.exists and thrift.source == 'upstream'
 
 - homebrew:
     name: thrift
