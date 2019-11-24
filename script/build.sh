@@ -1,8 +1,7 @@
 #!/bin/sh -e
 
 rm -rf build
+# TODO: Make the ansible-provisioning repository with all role dependencies available globally. Either in /etc/ansible or somewhere in the CI user. Have all ansible role test jobs update it before checking ansible.
 script/check.sh --ci-mode
-# TODO: Commented out because role dependencies are not available. Individual roles will not get their own CI job. They are integrated into the main provisioning repository as well as the project they are required for setting up a development environment that is as similar as possible to where it gets deployed.
-#script/ansible/check.sh
-# TODO: Be sure that this will be non-destructive and non-cluttering on the CI server.
+# TODO: Make sure that this will be non-destructive and non-cluttering on the CI node.
 #script/ansible/test.sh
