@@ -1,4 +1,5 @@
 ---
 thrift:
-  source: upstream
-  version: 0.12.0
+  source: debian
+  # TODO: Wait for 0.14.0 to be released and try again.
+  version: 0.13.0
