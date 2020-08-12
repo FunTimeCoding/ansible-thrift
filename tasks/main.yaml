@@ -16,7 +16,7 @@
   when: thrift.source == 'upstream'
 
 - shell: '{{ ansible_user_dir }}/compile-thrift.sh {{ thrift.version }}'
-  when: not check_thrift.stat.exists and thrift.source == 'upstream'
+  when: thrift.source == 'upstream' and not check_thrift.stat.exists
 
 - homebrew:
     name: thrift
